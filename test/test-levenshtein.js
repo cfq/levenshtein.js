@@ -35,10 +35,10 @@ function levenstein( first, second ){
 function printMatrix( d, f, s ){
 	var out = "";
 	
-	out = ["  ", "0"].concat(f.split('')).join(' | ') + " |\n";
+	out = ["  ", "0"].concat(s.split('')).join(' | ') + " |\n";
 	
 	for( var i = 0; i < d.length; i++ ){
-		out += ( i == 0 ? " 0" :  ' ' + (s[i-1] ? s[i-1] : '-' )) + " |";
+		out += ( i == 0 ? " 0" :  ' ' + (f[i-1] ? f[i-1] : '-' )) + " |";
 		for( var j = 0; j < d[i].length; j++ ){
 			out += (isNaN(d[i][j]) ? -1 : ("  " + d[i][j]).slice(-2) ) + " |";
 		}
@@ -49,4 +49,7 @@ function printMatrix( d, f, s ){
 	console.log("\n");
 }
 
-console.log( "Levensten distance between 'javascript' and 'java': " + levenstein('javascript', 'java') );
+var f = 'benoit',
+	s = 'noir';
+
+console.log( ["Levensten distance between '", f, "' and '", s, "': ", levenstein(f, s)].join("") );
